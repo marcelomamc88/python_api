@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify, render_template
 from flaskext.mysql import MySQL
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/address/api/latlong": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 mysql = MySQL()
 app.config['MYSQL_DATABASE_USER'] = 'root'
